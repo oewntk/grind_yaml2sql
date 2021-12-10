@@ -1,0 +1,11 @@
+/target/
+/yaml/
+/yaml2/
+/yaml
+/yaml2
+/sql/
+/nidmaps/
+/sers/
+**/_*/
+**/_*
+#**/*.jar
