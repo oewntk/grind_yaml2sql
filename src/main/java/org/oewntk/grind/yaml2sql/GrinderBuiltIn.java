@@ -4,6 +4,8 @@
 
 package org.oewntk.grind.yaml2sql;
 
+import org.oewntk.sql.out.CoreModelConsumer;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -23,38 +25,17 @@ public class GrinderBuiltIn
 	 */
 	public static void main(String[] args) throws IOException
 	{
-		// Timing
-		final long startTime = System.currentTimeMillis();
-
-		// Argument switches processing
-		int nArg = args.length; // left
-		int iArg = 0; // current
-
 		// Output
-		File outDir;
-		if (nArg > 0) // if left
-		//noinspection CommentedOutCode
+		File outDir = new File(args[0]);
+		if (!outDir.exists())
 		{
-			outDir = new File(args[iArg]);
-			// nArg--; // left: decrement
-			// iArg++; // current: move to next
-			if (!outDir.exists())
-			{
-				//noinspection ResultOfMethodCallIgnored
-				outDir.mkdirs();
-			}
+			//noinspection ResultOfMethodCallIgnored
+			outDir.mkdirs();
 		}
-		else
-		{
-			outDir = new File(".");
-		}
-		System.err.println("Output " + outDir.getAbsolutePath());
+
+		System.out.println("[Output] " + outDir.getAbsolutePath());
 
 		// Process
-		Grinder.builtins(outDir);
-
-		// Timing
-		final long endTime = System.currentTimeMillis();
-		System.err.println("Total execution time: " + (endTime - startTime) / 1000 + "s");
+		CoreModelConsumer.builtins(outDir);
 	}
 }
