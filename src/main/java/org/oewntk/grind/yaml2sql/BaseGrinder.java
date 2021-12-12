@@ -13,6 +13,7 @@ import org.oewntk.sql.out.Lexes;
 import org.oewntk.sql.out.Names;
 import org.oewntk.sql.out.Senses;
 import org.oewntk.sql.out.Synsets;
+import org.oewntk.yaml.in.CoreFactory;
 import org.oewntk.yaml.in.Factory;
 import org.oewntk.yaml.in.Memory;
 import org.oewntk.yaml.in.Memory.Unit;
@@ -53,7 +54,7 @@ public class BaseGrinder
 
 	public CoreModel makeCoreModel() throws IOException
 	{
-		return Factory.makeCoreModel(inDir);
+		return new CoreFactory(inDir).get();
 	}
 
 	public void processBase(CoreModel model, File outDir) throws FileNotFoundException

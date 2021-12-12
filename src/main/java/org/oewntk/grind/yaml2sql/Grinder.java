@@ -41,7 +41,7 @@ public class Grinder extends BaseGrinder
 
 	public Model makeModel() throws IOException
 	{
-		return Factory.makeModel(inDir, inDir2);
+		return new Factory(inDir, inDir2).get();
 	}
 
 	public void process(Model model, File outDir) throws FileNotFoundException
