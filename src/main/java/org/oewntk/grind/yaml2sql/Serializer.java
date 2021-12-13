@@ -20,6 +20,7 @@ public class Serializer
 		File outDir = new File(args[2]);
 		if (!outDir.isDirectory())
 		{
+			//noinspection ResultOfMethodCallIgnored
 			outDir.mkdirs();
 		}
 
