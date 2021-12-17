@@ -1,9 +1,9 @@
 /target/
-/yaml/
-/yaml2/
-/yaml
-/yaml2
-/sql/
+
+/yaml*/
+/yaml*
+/sql*/
+/sql*
 /nidmaps/
 /sers/
 **/_*/
