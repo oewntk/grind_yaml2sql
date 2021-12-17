@@ -35,11 +35,11 @@ grinds the SQL database
 
 *where*
 
-[YAML]    directory where OEWN distribution YAML files are
+[YAML] directory where OEWN distribution YAML files are
 
-[YAML2]  directory where extra YAML files are
+[YAML2] directory where extra YAML files are
 
-[SQL]      directory where SQL files are output
+[SQL] directory where SQL files are output
 
 ## Maven Central
 
