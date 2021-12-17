@@ -15,7 +15,7 @@ import java.io.IOException;
  * @author Bernard Bou
  * @see "https://wordnet.princeton.edu/documentation/wndb5wn"
  */
-public class GrinderBuiltIn
+public class GrindBuiltIn
 {
 	/**
 	 * Main entry point

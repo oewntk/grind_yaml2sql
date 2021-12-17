@@ -4,9 +4,9 @@
 
 package org.oewntk.grind.yaml2sql;
 
-import org.oewntk.model.CoreModel;
-import org.oewntk.sql.out.CoreModelConsumer;
-import org.oewntk.yaml.in.CoreFactory;
+import org.oewntk.model.Model;
+import org.oewntk.sql.out.ModelConsumer;
+import org.oewntk.yaml.in.Factory;
 
 import java.io.File;
 import java.io.IOException;
@@ -17,50 +17,28 @@ import java.io.IOException;
  * @author Bernard Bou
  * @see "https://sqlunet.sourceforge.net/schema.html"
  */
-public class BaseGrinder
+public class Grind
 {
-	// Argument switches processing
-	public static int flags(String[] args) throws IOException
-	{
-		int i = 0;
-		for (; i < args.length; i++)
-		{
-			if ("-traceTime".equals(args[i])) // if left and is "-traceTime"
-			{
-				Tracing.traceTime = true;
-			}
-			else if ("-traceHeap".equals(args[i])) // if left and is "-traceHeap"
-			{
-				Tracing.traceHeap = true;
-			}
-			else
-			{
-				break;
-			}
-		}
-		return i;
-	}
-
 	/**
 	 * Main entry point
 	 *
-	 * @param args command-line arguments yamlDir yamlDir2 [outputDir]
+	 * @param args command-line arguments [-compat:lexid] [-compat:pointer] yamlDir [outputDir]
 	 * @throws IOException io
 	 */
 	public static void main(String[] args) throws IOException
 	{
-		int iArg = BaseGrinder.flags(args);
+		int iArg = BaseGrind.flags(args);
 
 		// Tracing
 		final long startTime = Tracing.start();
 
 		// Input
 		File inDir = new File(args[iArg]);
-		System.err.println("[Input] " + inDir.getAbsolutePath());
+		Tracing.psInfo.println("[Input] " + inDir.getAbsolutePath());
 
 		// Input2
 		File inDir2 = new File(args[iArg + 1]);
-		System.err.println("[Input2] " + inDir2.getAbsolutePath());
+		Tracing.psInfo.println("[Input2] " + inDir2.getAbsolutePath());
 
 		// Output
 		File outDir = new File(args[iArg + 2]);
@@ -69,17 +47,17 @@ public class BaseGrinder
 			//noinspection ResultOfMethodCallIgnored
 			outDir.mkdirs();
 		}
-		System.err.println("[Output] " + outDir.getAbsolutePath());
+		Tracing.psInfo.println("[Output] " + outDir.getAbsolutePath());
 
 		// Supply model
 		Tracing.progress("before model is supplied,", startTime);
-		CoreModel model = new CoreFactory(inDir).get();
-		System.err.printf("[Model] %s\n%s%n", model.getSource(), model.info());
+		Model model = new Factory(inDir, inDir2).get();
+		//Tracing.psInfo.printf("[Model] %s\n%s%n", Arrays.toString(model.getSources()), model.info());
 		Tracing.progress("after model is supplied,", startTime);
 
 		// Consume model
 		Tracing.progress("before model is consumed,", startTime);
-		new CoreModelConsumer(outDir).accept(model);
+		new ModelConsumer(outDir).accept(model);
 		Tracing.progress("after model is consumed,", startTime);
 
 		// End
