@@ -17,7 +17,7 @@ import java.io.IOException;
  * @author Bernard Bou
  * @see "https://sqlunet.sourceforge.net/schema.html"
  */
-public class BaseGrind
+public class CoreGrind
 {
 	// Argument switches processing
 	public static int flags(String[] args) throws IOException
@@ -49,7 +49,7 @@ public class BaseGrind
 	 */
 	public static void main(String[] args) throws IOException
 	{
-		int iArg = BaseGrind.flags(args);
+		int iArg = CoreGrind.flags(args);
 
 		// Tracing
 		final long startTime = Tracing.start();

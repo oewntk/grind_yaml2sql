@@ -22,23 +22,23 @@ public class Mapper
 	{
 		try (PrintStream ps = new PrintStream(new FileOutputStream(new File(outDir, Names.WORDS.FILE)), true, StandardCharsets.UTF_8))
 		{
-			NIDMaps.printWords(ps, model.getLexesByLemma());
+			NIDMaps.printWords(ps, model.lexes);
 		}
 		try (PrintStream ps = new PrintStream(new FileOutputStream(new File(outDir, Names.CASEDWORDS.FILE)), true, StandardCharsets.UTF_8))
 		{
-			NIDMaps.printCasedWords(ps, model.getLexesByLemma());
+			NIDMaps.printCasedWords(ps, model.lexes);
 		}
 		try (PrintStream ps = new PrintStream(new FileOutputStream(new File(outDir, Names.MORPHS.FILE)), true, StandardCharsets.UTF_8))
 		{
-			NIDMaps.printMorphs(ps, model.getLexesByLemma());
+			NIDMaps.printMorphs(ps, model.lexes);
 		}
 		try (PrintStream ps = new PrintStream(new FileOutputStream(new File(outDir, Names.PRONUNCIATIONS.FILE)), true, StandardCharsets.UTF_8))
 		{
-			NIDMaps.printPronunciations(ps, model.getLexesByLemma());
+			NIDMaps.printPronunciations(ps, model.lexes);
 		}
 		try (PrintStream ps = new PrintStream(new FileOutputStream(new File(outDir, Names.SYNSETS.FILE)), true, StandardCharsets.UTF_8))
 		{
-			NIDMaps.printSynsets(ps, model.getSynsetsById());
+			NIDMaps.printSynsets(ps, model.synsets);
 		}
 	}
 

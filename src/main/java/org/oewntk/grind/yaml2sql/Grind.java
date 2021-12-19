@@ -27,7 +27,7 @@ public class Grind
 	 */
 	public static void main(String[] args) throws IOException
 	{
-		int iArg = BaseGrind.flags(args);
+		int iArg = CoreGrind.flags(args);
 
 		// Tracing
 		final long startTime = Tracing.start();
