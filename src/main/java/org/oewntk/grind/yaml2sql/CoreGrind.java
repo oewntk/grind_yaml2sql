@@ -79,7 +79,7 @@ public class CoreGrind
 
 		// Consume model
 		Tracing.progress("before model is consumed,", startTime);
-		new CoreModelConsumer(outDir, Tracing.psInfo).accept(model);
+		new CoreModelConsumer(outDir).accept(model);
 		Tracing.progress("after model is consumed,", startTime);
 
 		// End
