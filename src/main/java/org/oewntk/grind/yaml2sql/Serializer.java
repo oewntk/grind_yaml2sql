@@ -25,7 +25,7 @@ public class Serializer
 		}
 
 		final Model model = Factory.makeModel(args);
-		org.oewntk.model.Serialize.serializeModel(model, new File(outDir, FILE_MODEL));
+		org.oewntk.model.Serialize.serializeCoreModel(model, new File(outDir, FILE_MODEL));
 		SerializeNIDs.serializeNIDs(model, outDir);
 	}
 }
