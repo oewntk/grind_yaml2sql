@@ -74,7 +74,7 @@ public class CoreGrind
 		// Supply model
 		Tracing.progress("before model is supplied,", startTime);
 		CoreModel model = new CoreFactory(inDir).get();
-		//Tracing.psInfo.printf("[Model] %s\n%s%n", model.getSource(), model.info());
+		//Tracing.psInfo.printf("[CoreModel] %s%n%s%n%n", model.getSource(), model.info());
 		Tracing.progress("after model is supplied,", startTime);
 
 		// Consume model
