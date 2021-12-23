@@ -13,7 +13,7 @@ import org.oewntk.yaml.in.Factory;
 
 public class Serializer
 {
-	static final String FILE_MODEL = "model";
+	private static final String FILE_MODEL = "model.ser";
 
 	public static void main(String[] args) throws IOException
 	{
