@@ -8,12 +8,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>io.github.x-englishwordnet</groupId>
+	<groupId>io.github.oewntk</groupId>
 	<artifactId>yaml2sql</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<name>yaml_to_sql</name>
 	<description>Read YAML Wordnet model and export it to SQL files.</description>
-	<url>https://github.com/x-englishwordnet/grind_yaml2sql</url>
+	<url>https://github.com/oewntk/grind_yaml2sql</url>
 
 	<properties>
 		<maven.compiler.source>11</maven.compiler.source>
@@ -23,17 +23,17 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>io.github.x-englishwordnet</groupId>
+			<groupId>io.github.oewntk</groupId>
 			<artifactId>model</artifactId>
 			<version>1.0.0-SNAPSHOT</version>
 		</dependency>
 		<dependency>
-			<groupId>io.github.x-englishwordnet</groupId>
+			<groupId>io.github.oewntk</groupId>
 			<artifactId>fromyaml</artifactId>
 			<version>1.0.0-SNAPSHOT</version>
 		</dependency>
 		<dependency>
-			<groupId>io.github.x-englishwordnet</groupId>
+			<groupId>io.github.oewntk</groupId>
 			<artifactId>tosql</artifactId>
 			<version>1.0.0-SNAPSHOT</version>
 		</dependency>
@@ -165,7 +165,7 @@
 				<extensions>true</extensions>
 				<configuration>
 					<serverId>ossrh</serverId>
-					<nexusUrl>https://oss.sonatype.org/</nexusUrl>
+					<nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
 					<autoReleaseAfterClose>true</autoReleaseAfterClose>
 				</configuration>
 			</plugin>
@@ -198,24 +198,24 @@
 		<repository>
 			<id>ossrh</id>
 			<name>Maven Central Staging Repository</name>
-			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+			<url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2</url>
 		</repository>
 		<snapshotRepository>
 			<id>ossrh</id>
 			<name>Maven Central Snapshot Repository</name>
-			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+			<url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
 		</snapshotRepository>
 	</distributionManagement>
 
 	<scm>
-		<url>https://github.com/x-englishwordnet/grind_yaml2sql</url>
-		<connection>scm:git:git://github.com/x-englishwordnet/grind_yaml2sql.git</connection>
-		<developerConnection>scm:git:ssh://git@github.com:x-englishwordnet/grind_yaml2sql.git</developerConnection>
+		<url>https://github.com/oewntk/grind_yaml2sql</url>
+		<connection>scm:git:git://github.com/oewntk/grind_yaml2sql.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com:oewntk/grind_yaml2sql.git</developerConnection>
 	</scm>
 
 	<issueManagement>
 		<system>GitHub</system>
-		<url>https://github.com/x-englishwordnet/grind_yaml2sql/issues</url>
+		<url>https://github.com/oewntk/grind_yaml2sql/issues</url>
 	</issueManagement>
 
 	<licenses>
@@ -227,8 +227,8 @@
 	</licenses>
 
 	<organization>
-		<name>com.github.x-englishwordnet</name>
-		<url>https://github.com/x-englishwordnet</url>
+		<name>com.github.oewntk</name>
+		<url>https://github.com/oewntk</url>
 	</organization>
 
 	<developers>
