@@ -9,7 +9,6 @@ import org.oewntk.sql.out.ModelConsumer;
 import org.oewntk.yaml.in.Factory;
 
 import java.io.File;
-import java.io.IOException;
 
 /**
  * Main class that generates the WN database in the SQL format
@@ -23,9 +22,8 @@ public class Grind
 	 * Main entry point
 	 *
 	 * @param args command-line arguments [-compat:lexid] [-compat:pointer] yamlDir [outputDir]
-	 * @throws IOException io
 	 */
-	public static void main(String[] args) throws IOException
+	public static void main(String[] args)
 	{
 		int iArg = CoreGrind.flags(args);
 

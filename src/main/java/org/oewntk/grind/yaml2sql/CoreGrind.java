@@ -9,7 +9,6 @@ import org.oewntk.sql.out.CoreModelConsumer;
 import org.oewntk.yaml.in.CoreFactory;
 
 import java.io.File;
-import java.io.IOException;
 
 /**
  * Main class that generates the WN database in the SQL format
@@ -20,7 +19,7 @@ import java.io.IOException;
 public class CoreGrind
 {
 	// Argument switches processing
-	public static int flags(String[] args) throws IOException
+	public static int flags(String[] args)
 	{
 		int i = 0;
 		for (; i < args.length; i++)
@@ -45,9 +44,8 @@ public class CoreGrind
 	 * Main entry point
 	 *
 	 * @param args command-line arguments yamlDir yamlDir2 [outputDir]
-	 * @throws IOException io
 	 */
-	public static void main(String[] args) throws IOException
+	public static void main(String[] args)
 	{
 		int iArg = CoreGrind.flags(args);
 
