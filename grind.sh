@@ -1,5 +1,12 @@
 #!/bin/bash
 
+#
+# Copyright (c) 2021. Bernard Bou.
+#
+# indir (yaml)
+# indir2 (yaml2)
+# outdir (sql/data)
+
 IN="$1"
 if [ -z "$1" ]; then
 	IN=yaml
@@ -14,9 +21,9 @@ echo "YAML2: ${IN2}" 1>&2;
 
 OUTDIR="$3"
 if [ -z "$3" ]; then
-	OUTDIR=wndb
+	OUTDIR=sql/data
 fi
 mkdir -p "${OUTDIR}"
-echo "DIR:   "${OUTDIR}"" 1>&2;
+echo "DIR:   ${OUTDIR}" 1>&2;
 
 java -ea -jar oewn-grind-yaml2sql.jar "${IN}" "${IN2}" "${OUTDIR}"
