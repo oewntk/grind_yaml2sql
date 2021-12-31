@@ -174,7 +174,7 @@ for m in ${modules}; do
 				suffix=
 				;;
 		 	create|index|reference)
-		 		dir="${sqldir}/${dbtype}"
+		 		dir="${sqldir}/${dbtype}/${op}"
 				suffix="-${op}"
 		 		;;	
 		esac

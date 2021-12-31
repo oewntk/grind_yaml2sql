@@ -11,9 +11,9 @@ if "%1"=="-d" call :deletedb
 call :dbexists
 if not %DBEXISTS%==0 call :createdb
 
-for %%T in (%TABLES%) do call :process "sql/%DBTYPE%/%%T-create.sql" "create %%T" %DB%
+for %%T in (%TABLES%) do call :process sql/%DBTYPE%/create/%%T-create.sql "create %%T" %DB%
 for %%T in (%TABLES%) do call :process sql/data/%%T.sql "data %%T" %DB%
-for %%T in (%TABLES%) do call :process sql/%DBTYPE%/%%T-index.sql "index %%T" %DB% --force
+for %%T in (%TABLES%) do call :process sql/%DBTYPE%/index/%%T-index.sql "index %%T" %DB% --force
 goto :eof
 
 :process
