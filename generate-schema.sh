@@ -9,6 +9,7 @@
 # files*: external sql template file names, if none they are taken from resources
 
 source define_colors.sh
+
 if [ "$1" == "-compat" ]; then
   compatswitch="-compat"
   shift
