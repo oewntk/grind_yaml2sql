@@ -18,9 +18,13 @@ else
   compatswitch=
 fi
 
+outdir="$1"
+shift
+if [ "${outdir}" == "" ]; then
+  outdir="sql"
+fi
+
 if [ "$*" != "" ]; then
-  outdir="$1"
-  shift
   indir="$1"
   shift
   for sql in $*; do
@@ -28,7 +32,7 @@ if [ "$*" != "" ]; then
     java -ea -cp oewn-grind-yaml2sql.jar org.oewntk.sql.out.SchemaGenerator ${compatswitch} "${outdir}" "${indir}" "${sql}"
   done
 else
-  outdir="sql"
+  echo -e "${C}$(readlink -f ${outdir})${Z}"
   for db in mysql sqlite; do
     for type in create index reference; do
       echo -e "${M}${db}/${type}${Z}"
