@@ -18,7 +18,15 @@ import java.io.File;
  */
 public class CoreGrind
 {
-	// Argument switches processing
+	/**
+	 * Argument switches processing
+	 * <p>
+	 * /**
+	 * Argument switches processing
+	 *
+	 * @param args command-line arguments
+	 * @return int[0]=flags, int[1]=next arg to process
+	 */
 	public static int flags(String[] args)
 	{
 		int i = 0;

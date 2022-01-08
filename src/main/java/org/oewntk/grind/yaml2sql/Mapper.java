@@ -11,8 +11,17 @@ import org.oewntk.yaml.in.Factory;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * Class that serializes the NID maps
+ */
 public class Mapper
 {
+	/**
+	 * Main entry point
+	 *
+	 * @param args command-line arguments yamlDir [outputDir]
+	 * @throws IOException io exception
+	 */
 	static public void main(String[] args) throws IOException
 	{
 		File outDir = new File(args[2]);

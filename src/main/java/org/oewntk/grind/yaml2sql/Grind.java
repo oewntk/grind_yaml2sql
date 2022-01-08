@@ -21,7 +21,7 @@ public class Grind
 	/**
 	 * Main entry point
 	 *
-	 * @param args command-line arguments [-compat:lexid] [-compat:pointer] yamlDir [outputDir]
+	 * @param args command-line arguments yamlDir [outputDir]
 	 */
 	public static void main(String[] args)
 	{
