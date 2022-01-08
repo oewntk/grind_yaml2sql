@@ -2,7 +2,10 @@
 
 source define_tables.sh
 
-outdir="sql/"
+outdir="$1"
+if [ "${outdir}" == "" ]; then
+  outdir="sql/"
+fi
 datadir="data/"
 
 for table in ${tables}; do
