@@ -12,7 +12,7 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * Class that serializes the NID maps
+ * Class that prints the NID maps
  */
 public class Mapper
 {

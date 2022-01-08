@@ -20,9 +20,6 @@ public class CoreGrind
 {
 	/**
 	 * Argument switches processing
-	 * <p>
-	 * /**
-	 * Argument switches processing
 	 *
 	 * @param args command-line arguments
 	 * @return int[0]=flags, int[1]=next arg to process
