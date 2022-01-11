@@ -166,9 +166,9 @@ echo -e "${M}restoring ${db}${Z}"
 
 #credentials
 #export lcreds=`getcredentialslegacy`
-#echo "OLD ${lcreds}"
+#echo "credentials (old style) ${lcreds}"
 export creds=`getcredentials`
-#echo "credentials ${lcreds}"
+#echo "credentials ${creds}"
 
 #database
 if [ ! -z "${dbdelete}" ]; then
