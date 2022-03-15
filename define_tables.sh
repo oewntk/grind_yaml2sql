@@ -22,9 +22,9 @@ senses
 lexes_morphs
 lexes_pronunciations
 senses_adjpositions
-senses_senses
+lexrelations
 senses_vframes
 senses_vtemplates
-synsets_synsets
+semrelations
 "
 echo ${tables}

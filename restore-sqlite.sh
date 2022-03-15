@@ -25,15 +25,21 @@ senses
 lexes_morphs
 lexes_pronunciations
 senses_adjpositions
-senses_senses
+lexrelations
 senses_vframes
 senses_vtemplates
-synsets_synsets
+semrelations
 "
 
-# I N C L U D E
+# C O L O R S
 
-source define_colors.sh
+export R='\u001b[31m'
+export G='\u001b[32m'
+export B='\u001b[34m'
+export Y='\u001b[33m'
+export M='\u001b[35m'
+export C='\u001b[36m'
+export Z='\u001b[0m'
 
 # M A I N
 
@@ -183,7 +189,7 @@ for m in ${modules}; do
 			if [ ! -e "${f}" -a "${op}" == "reference" ]; then
 			  continue
 			fi
-			echo -e "sql=${Y}${f}${Z}"
+			echo -e "sql=${Y}$(basename ${f})${Z}"
 			process "${f}" "${op}"
 		done
 	done
