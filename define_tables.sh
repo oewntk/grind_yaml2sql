@@ -6,6 +6,7 @@
 
 export tables="
 synsets
+senses
 words
 casedwords
 pronunciations
@@ -17,14 +18,13 @@ samples
 vframes
 vtemplates
 adjpositions
+semrelations
+lexrelations
 lexes
-senses
 lexes_morphs
 lexes_pronunciations
 senses_adjpositions
-lexrelations
 senses_vframes
 senses_vtemplates
-semrelations
 "
 echo ${tables}

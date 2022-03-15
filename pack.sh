@@ -13,9 +13,15 @@ if [ -z "${dbdir}" ]; then
   dbdir=sql
 fi
 
-# S O U R C E S
+# C O L O R S
 
-source define_colors.sh
+export R='\u001b[31m'
+export G='\u001b[32m'
+export B='\u001b[34m'
+export Y='\u001b[33m'
+export M='\u001b[35m'
+export C='\u001b[36m'
+export Z='\u001b[0m'
 
 # M A I N
 
