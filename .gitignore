@@ -4,6 +4,8 @@
 /yaml*
 /sql*/
 /sql*
+/test*/
+/test*
 /nidmaps/
 /sers/
 **/_*/
