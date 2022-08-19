@@ -17,7 +17,7 @@ if [ -z "${indir2}" ]; then
 fi
 outdir=$1
 if [ -z "${outdir}" ]; then
-  indir=nidmaps
+  outdir=nidmaps
 fi
 
 java -cp oewn-grind-yaml2sql.jar org.oewntk.grind.yaml2sql.Mapper "${indir}" "${indir2}" "${outdir}"
