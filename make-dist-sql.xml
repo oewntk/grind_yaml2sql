@@ -5,8 +5,6 @@
 
 	<!-- P R O P E R T I E S -->
 
-	<property name="version" value="1.21.0"/>
-
 	<property name="dir.project" location="."/>
 
 	<property name="dir.release" location="${dir.project}"/>
@@ -44,6 +42,11 @@
 		<echo>dbtag=${dbtag}</echo>
 	</target>
 
+	<target name="ask-version" unless="version" description="prompts for version if necessary (not in command line arguments)">
+		<input addProperty="version" message="Version:"/>
+		<echo>version=${version}</echo>
+	</target>
+
 	<target name="makestamp">
 		<tstamp>
 			<format property="touch.time" pattern="EEE MMM d HH:mm:ss z yyyy" unit="hour" locale="en"/>
@@ -51,20 +54,20 @@
 	</target>
 
 	<!-- main -->
-	<target name="dist" depends="makestamp,ask-dbtag,ask-dbdir,dist-sqlite,dist-mysql">
+	<target name="dist" depends="makestamp,ask-dbtag,ask-dbdir,ask-version,dist-sqlite,dist-mysql">
 		<echo message="done"/>
 	</target>
 
-	<target name="dist-sqlite" depends="makestamp,ask-dbtag,ask-dbdir">
+	<target name="dist-sqlite" depends="makestamp,ask-dbtag,ask-dbdir,ask-version">
 		<pack dbtype="sqlite" dbtag="${dbtag}" version="${version}"/>
 	</target>
 
-	<target name="dist-mysql" depends="makestamp,ask-dbtag,ask-dbdir">
+	<target name="dist-mysql" depends="makestamp,ask-dbtag,ask-dbdir,ask-version">
 		<pack dbtype="mysql" dbtag="${dbtag}" version="${version}"/>
 	</target>
 
 	<!-- dump -->
-	<target name="dump-sqlite" depends="makestamp,ask-dbtag,ask-dbdir">
+	<target name="dump-sqlite" depends="makestamp,ask-dbtag,ask-dbdir,ask-version">
 		<echo message="version ${version}"/>
 		<echo message="stamp ${DSTAMP}"/>
 		<echo message="release ${dir.release}/"/>
@@ -73,7 +76,7 @@
 		<echo-fileset filesetref="fs.restore.sqlite"/>
 	</target>
 
-	<target name="dump-mysql" depends="makestamp,ask-dbtag,ask-dbdir">
+	<target name="dump-mysql" depends="makestamp,ask-dbtag,ask-dbdir,ask-version">
 		<echo message="version ${version}"/>
 		<echo message="stamp ${DSTAMP}"/>
 		<echo message="release ${dir.release}/"/>

@@ -24,6 +24,7 @@ if [ -z "$3" ]; then
 	OUTDIR=sql/data
 fi
 mkdir -p "${OUTDIR}"
-echo "DIR:   ${OUTDIR}" 1>&2;
+echo "OUT:   ${OUTDIR}" 1>&2;
 
 java -ea -jar oewn-grind-yaml2sql.jar "${IN}" "${IN2}" "${OUTDIR}"
+echo "done $?"

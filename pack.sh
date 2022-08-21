@@ -5,7 +5,7 @@
 dbtag=$1
 shift
 if [ -z "${dbtag}" ]; then
-  dbtag=2021
+  dbtag=2022
 fi
 dbdir=$1
 shift
@@ -27,4 +27,4 @@ export Z='\u001b[0m'
 
 echo -e "${C}packing ${Y}${dbtag}${Z}"
 echo "ant pack with dbtag=${dbtag}"
-ant -f make-dist-sql.xml -Ddbdir=${dbdir} -Ddbtag=${dbtag}
+ant -f make-dist-sql.xml -Ddbdir=${dbdir} -Ddbtag=${dbtag} -Dversion="1.${dbtag:2:2}"
