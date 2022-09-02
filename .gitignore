@@ -1,5 +1,4 @@
 /target/
-
 /yaml*/
 /yaml*
 /sql*/
@@ -12,3 +11,4 @@
 **/_*
 #**/*.jar
 /oewn.csv
+/build
