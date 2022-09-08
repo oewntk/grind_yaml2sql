@@ -96,6 +96,7 @@
 		<sequential>
 			<echo message="define fs.@{dbtype}"/>
 			<fileset id="fs.@{dbtype}.@{dbtag}.sql" dir="${dir.release}/${dbdir}">
+				<include name="build"/>
 				<include name="data/*.sql"/>
 				<include name="@{dbtype}/create/*.sql"/>
 				<include name="@{dbtype}/index/*.sql"/>

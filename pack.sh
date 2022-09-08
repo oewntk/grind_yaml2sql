@@ -33,3 +33,4 @@ export Z='\u001b[0m'
 echo -e "${C}packing ${Y}${dbtag}${Z}"
 echo "ant pack with dbtag=${dbtag}"
 ant -f make-dist-sql.xml -Ddbdir=${dbdir} -Ddbtag=${dbtag} -Dversion="${dbversion}"
+
