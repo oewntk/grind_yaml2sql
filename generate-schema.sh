@@ -42,7 +42,7 @@ if [ "$*" != "" ]; then
 else
   echo -e "${C}$(readlink -f ${outdir})${Z}"
   for db in mysql sqlite; do
-    for type in create index reference; do
+    for type in create index reference views; do
       echo -e "${M}${db}/${type}${Z}"
       java -ea -cp oewn-grind-yaml2sql.jar org.oewntk.sql.out.SchemaGenerator ${compatswitch} ${m} "${outdir}/${db}/${type}" "${db}/${type}" $*
     done
