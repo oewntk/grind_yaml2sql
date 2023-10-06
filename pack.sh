@@ -5,7 +5,7 @@
 dbtag=$1
 shift
 if [ -z "${dbtag}" ]; then
-  dbtag=2022
+  dbtag=2023
 fi
 dbversion=$1
 shift
