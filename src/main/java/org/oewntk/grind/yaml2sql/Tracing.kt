@@ -3,6 +3,7 @@
  */
 package org.oewntk.grind.yaml2sql
 
+import java.io.OutputStream
 import java.io.PrintStream
 import java.text.DecimalFormat
 import java.text.NumberFormat
@@ -17,6 +18,12 @@ object Tracing {
 	@JvmField
 	val psInfo: PrintStream = System.out
 	val psErr: PrintStream = System.err
+	val psNull: PrintStream = PrintStream(object : OutputStream(
+	) {
+		override fun write(i: Int) {
+			// do nothing
+		}
+	})
 	private val psHeap: PrintStream = System.out
 	private val psTime: PrintStream = System.out
 
