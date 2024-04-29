@@ -23,7 +23,6 @@ object CoreGrind {
 	 * @param args command-line arguments
 	 * @return int[0]=flags, int[1]=next arg to process
 	 */
-	@JvmStatic
 	fun flags(args: Array<String>): Int {
 		var i = 0
 		while (i < args.size) {
