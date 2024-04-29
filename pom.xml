@@ -147,6 +147,8 @@
         <version>2.22.2</version>
         <configuration>
           <systemPropertyVariables>
+            <SOURCE>${project.basedir}/yaml</SOURCE>>
+            <SOURCE2>${project.basedir}/yaml2</SOURCE2>
             <SILENT/>
           </systemPropertyVariables>
         </configuration>
