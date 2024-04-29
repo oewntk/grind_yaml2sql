@@ -13,7 +13,7 @@ object LibTestsYamlCommon {
 
     private val source: String? = System.getProperty("SOURCE")
 
-    val ps: PrintStream = if (!System.getProperties().containsKey("SILENT")) Tracing.psInfo else Tracing.psNull
+    private val ps: PrintStream = if (!System.getProperties().containsKey("SILENT")) Tracing.psInfo else Tracing.psNull
 
     var model: CoreModel? = null
 
