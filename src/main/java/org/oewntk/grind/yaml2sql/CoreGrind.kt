@@ -17,71 +17,71 @@ import java.io.File
  */
 object CoreGrind {
 
-	/**
-	 * Argument switches processing
-	 *
-	 * @param args command-line arguments
-	 * @return int[0]=flags, int[1]=next arg to process
-	 */
-	fun flags(args: Array<String>): Int {
-		var i = 0
-		while (i < args.size) {
-			if ("-traceTime" == args[i]) // if left and is "-traceTime"
-			{
-				Tracing.traceTime = true
-			} else if ("-traceHeap" == args[i]) // if left and is "-traceHeap"
-			{
-				Tracing.traceHeap = true
-			} else {
-				break
-			}
-			i++
-		}
-		return i
-	}
+    /**
+     * Argument switches processing
+     *
+     * @param args command-line arguments
+     * @return int[0]=flags, int[1]=next arg to process
+     */
+    fun flags(args: Array<String>): Int {
+        var i = 0
+        while (i < args.size) {
+            if ("-traceTime" == args[i]) // if left and is "-traceTime"
+            {
+                Tracing.traceTime = true
+            } else if ("-traceHeap" == args[i]) // if left and is "-traceHeap"
+            {
+                Tracing.traceHeap = true
+            } else {
+                break
+            }
+            i++
+        }
+        return i
+    }
 
-	/**
-	 * Main entry point
-	 *
-	 * @param args command-line arguments
-	 * ```
-	 * yamlDir yamlDir2 [outputDir]
-	 * ```
-	 */
-	@JvmStatic
-	fun main(args: Array<String>) {
-		val iArg = flags(args)
+    /**
+     * Main entry point
+     *
+     * @param args command-line arguments
+     * ```
+     * yamlDir yamlDir2 [outputDir]
+     * ```
+     */
+    @JvmStatic
+    fun main(args: Array<String>) {
+        val iArg = flags(args)
 
-		// Tracing
-		val startTime = start()
+        // Tracing
+        val startTime = start()
 
-		// Input
-		val inDir = File(args[iArg])
-		Tracing.psInfo.println("[Input] " + inDir.absolutePath)
+        // Input
+        val inDir = File(args[iArg])
+        Tracing.psInfo.println("[Input] " + inDir.absolutePath)
 
-		// Input2
-		val inDir2 = File(args[iArg + 1])
-		Tracing.psInfo.println("[Input2] " + inDir2.absolutePath)
+        // Input2
+        val inDir2 = File(args[iArg + 1])
+        Tracing.psInfo.println("[Input2] " + inDir2.absolutePath)
 
-		// Output
-		val outDir = File(args[iArg + 2])
-		if (!outDir.exists()) {
-			outDir.mkdirs()
-		}
-		Tracing.psInfo.println("[Output] " + outDir.absolutePath)
+        // Output
+        val outDir = File(args[iArg + 2])
+        if (!outDir.exists()) {
+            outDir.mkdirs()
+        }
+        Tracing.psInfo.println("[Output] " + outDir.absolutePath)
 
-		// Supply model
-		progress("before model is supplied,", startTime)
-		val model = CoreFactory(inDir).get()
-		//Tracing.psInfo.printf("[CoreModel] %s%n%s%n%n", model.getSource(), model.info());
-		progress("after model is supplied,", startTime)
+        // Supply model
+        progress("before model is supplied,", startTime)
+        val model = CoreFactory(inDir).get()
+        //Tracing.psInfo.printf("[CoreModel] %s%n%s%n%n", model.getSource(), model.info());
+        progress("after model is supplied,", startTime)
 
-		// Consume model
-		progress("before model is consumed,", startTime)
-		CoreModelConsumer(outDir).accept(model!!)
-		progress("after model is consumed,", startTime)
+        // Consume model
+        progress("before model is consumed,", startTime)
+        CoreModelConsumer(outDir).accept(model!!)
+        progress("after model is consumed,", startTime)
 
-		// End
-		progress("total,", startTime)
-	}
+        // End
+        progress("total,", startTime)
+    }
 }

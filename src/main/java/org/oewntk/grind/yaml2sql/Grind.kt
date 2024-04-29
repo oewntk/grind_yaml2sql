@@ -18,48 +18,48 @@ import java.io.File
  */
 object Grind {
 
-	/**
-	 * Main entry point
-	 *
-	 * @param args command-line arguments
-	 * ```
-	 * yamlDir [outputDir]
-	 * ```
-	 */
-	@JvmStatic
-	fun main(args: Array<String>) {
-		val iArg = flags(args)
+    /**
+     * Main entry point
+     *
+     * @param args command-line arguments
+     * ```
+     * yamlDir [outputDir]
+     * ```
+     */
+    @JvmStatic
+    fun main(args: Array<String>) {
+        val iArg = flags(args)
 
-		// Tracing
-		val startTime = start()
+        // Tracing
+        val startTime = start()
 
-		// Input
-		val inDir = File(args[iArg])
-		Tracing.psInfo.println("[Input] " + inDir.absolutePath)
+        // Input
+        val inDir = File(args[iArg])
+        Tracing.psInfo.println("[Input] " + inDir.absolutePath)
 
-		// Input2
-		val inDir2 = File(args[iArg + 1])
-		Tracing.psInfo.println("[Input2] " + inDir2.absolutePath)
+        // Input2
+        val inDir2 = File(args[iArg + 1])
+        Tracing.psInfo.println("[Input2] " + inDir2.absolutePath)
 
-		// Output
-		val outDir = File(args[iArg + 2])
-		if (!outDir.exists()) {
-			outDir.mkdirs()
-		}
-		Tracing.psInfo.println("[Output] " + outDir.absolutePath)
+        // Output
+        val outDir = File(args[iArg + 2])
+        if (!outDir.exists()) {
+            outDir.mkdirs()
+        }
+        Tracing.psInfo.println("[Output] " + outDir.absolutePath)
 
-		// Supply model
-		progress("before model is supplied,", startTime)
-		val model = Factory(inDir, inDir2).get()
-		//Tracing.psInfo.printf("[Model] %s%n%s%n%n", Arrays.toString(model.getSources()), model.info());
-		progress("after model is supplied,", startTime)
+        // Supply model
+        progress("before model is supplied,", startTime)
+        val model = Factory(inDir, inDir2).get()
+        //Tracing.psInfo.printf("[Model] %s%n%s%n%n", Arrays.toString(model.getSources()), model.info());
+        progress("after model is supplied,", startTime)
 
-		// Consume model
-		progress("before model is consumed,", startTime)
-		ModelConsumer(outDir).accept(model!!)
-		progress("after model is consumed,", startTime)
+        // Consume model
+        progress("before model is consumed,", startTime)
+        ModelConsumer(outDir).accept(model!!)
+        progress("after model is consumed,", startTime)
 
-		// End
-		progress("total,", startTime)
-	}
+        // End
+        progress("total,", startTime)
+    }
 }

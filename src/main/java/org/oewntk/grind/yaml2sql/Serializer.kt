@@ -14,26 +14,26 @@ import java.io.IOException
  */
 object Serializer {
 
-	private const val FILE_MODEL = "model.ser"
+    private const val FILE_MODEL = "model.ser"
 
-	/**
-	 * Main entry point
-	 *
-	 * @param args command-line arguments
-	 * ```
-	 * yamlDir [outputDir]
-	 * ```
-	 * @throws IOException io exception
-	 */
-	@Throws(IOException::class)
-	@JvmStatic
-	fun main(args: Array<String>) {
-		val outDir = File(args[2])
-		if (!outDir.isDirectory) {
-			outDir.mkdirs()
-		}
-		val model = makeModel(args)
-		serializeCoreModel(model!!, File(outDir, FILE_MODEL))
-		serializeNIDs(model, outDir)
-	}
+    /**
+     * Main entry point
+     *
+     * @param args command-line arguments
+     * ```
+     * yamlDir [outputDir]
+     * ```
+     * @throws IOException io exception
+     */
+    @Throws(IOException::class)
+    @JvmStatic
+    fun main(args: Array<String>) {
+        val outDir = File(args[2])
+        if (!outDir.isDirectory) {
+            outDir.mkdirs()
+        }
+        val model = makeModel(args)
+        serializeCoreModel(model!!, File(outDir, FILE_MODEL))
+        serializeNIDs(model, outDir)
+    }
 }

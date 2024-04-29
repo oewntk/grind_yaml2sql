@@ -13,23 +13,23 @@ import java.io.IOException
  */
 object Mapper {
 
-	/**
-	 * Main entry point
-	 *
-	 * @param args command-line arguments
-	 * ```
-	 * yamlDir [outputDir]
-	 * ```
-	 * @throws IOException io exception
-	 */
-	@Throws(IOException::class)
-	@JvmStatic
-	fun main(args: Array<String>) {
-		val outDir = File(args[2])
-		if (!outDir.isDirectory) {
-			outDir.mkdirs()
-		}
-		val model = makeModel(args)
-		printMaps(model!!, outDir)
-	}
+    /**
+     * Main entry point
+     *
+     * @param args command-line arguments
+     * ```
+     * yamlDir [outputDir]
+     * ```
+     * @throws IOException io exception
+     */
+    @Throws(IOException::class)
+    @JvmStatic
+    fun main(args: Array<String>) {
+        val outDir = File(args[2])
+        if (!outDir.isDirectory) {
+            outDir.mkdirs()
+        }
+        val model = makeModel(args)
+        printMaps(model!!, outDir)
+    }
 }
