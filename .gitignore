@@ -9,6 +9,6 @@
 /sers/
 **/_*/
 **/_*
-#**/*.jar
+/dependency-reduced-pom.xml
 /oewn.csv
 /build
