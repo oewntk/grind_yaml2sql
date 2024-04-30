@@ -1,11 +1,8 @@
 #!/bin/bash
 
 #
-# Copyright (c) 2021. Bernard Bou.
+# Copyright (c) 2021-2024. Bernard Bou.
 #
-# indir (yaml)
-# indir2 (yaml2)
-# outdir (sql/data)
 
 IN="$1"
 if [ -z "$1" ]; then

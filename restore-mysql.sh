@@ -1,4 +1,8 @@
 #!/bin/bash
+#
+# Copyright (c) 2024. Bernard Bou.
+#
+
 # 22/11/2021
 
 # C O N S T S

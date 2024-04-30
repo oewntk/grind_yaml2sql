@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?><?eclipse.ant.import?>
 
+<!--
+  ~ Copyright (c) 2024. Bernard Bou.
+  -->
+
 <project basedir="." default="dist" name="dist">
 
   <!-- P R O P E R T I E S -->

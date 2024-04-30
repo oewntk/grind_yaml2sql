@@ -1,5 +1,9 @@
 #!/bin/bash
 
+#
+# Copyright (c) 2024. Bernard Bou.
+#
+
 # D A T A B A S E (PARAM 2)
 
 db="$1"
