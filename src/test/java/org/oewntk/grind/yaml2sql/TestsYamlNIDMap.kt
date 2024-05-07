@@ -17,10 +17,10 @@ import kotlin.test.assertEquals
 class TestsYamlNIDMap {
 
     // first
-    private val hoodLex = Lex("'hood", "n", null)
+    private val hoodLex = Lex("'hood", "n")
 
     // last
-    private val zymurgyLex = Lex("zymurgy", "n", null)
+    private val zymurgyLex = Lex("zymurgy", "n")
 
     private fun testLookupByKey(lex: Lex, expectedNID: Int) {
         val lexK = Key.W_P_A.of(lex, Lex::lemma, Lex::type)
