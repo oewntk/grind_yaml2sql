@@ -12,3 +12,4 @@
 #**/*.jar
 /oewn.csv
 /build
+/dependency-reduced-pom.xml
