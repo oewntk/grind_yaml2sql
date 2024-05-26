@@ -1,4 +1,5 @@
 /target/
+/build/
 /yaml*/
 /yaml*
 /sql*/
@@ -9,8 +10,9 @@
 /sers/
 **/_*/
 **/_*
-#**/*.jar
 /oewn.csv
+/dependency-reduced-pom.xml
+/oewn-grind-yaml2sql.jar
 /build
 /dependency-reduced-pom.xml
 /oewn-grind-yaml2sql.jar
