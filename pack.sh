@@ -6,16 +6,8 @@
 
 # P A R A M S
 
-dbtag=$1
-shift
-if [ -z "${dbtag}" ]; then
-  dbtag=2023
-fi
-dbversion=$1
-shift
-if [ -z "${dbversion}" ]; then
-  dbversion=1
-fi
+source ../define_build.sh
+
 dbdir=$1
 shift
 if [ -z "${dbdir}" ]; then
@@ -34,7 +26,7 @@ export Z='\u001b[0m'
 
 # M A I N
 
-echo -e "${C}packing ${Y}${dbtag}${Z}"
-echo "ant pack with dbtag=${dbtag}"
-ant -f make-dist-sql.xml -Ddbdir=${dbdir} -Ddbtag=${dbtag} -Dversion="${dbversion}"
+echo -e "${C}packing ${Y}${TAG}${Z}"
+echo "ant pack with dbtag=${TAG}"
+ant -f make-dist-sql.xml -Ddbdir=${dbdir} -Ddbtag=${TAG} -Dversion="${BUILD}"
 
