@@ -23,6 +23,6 @@ fi
 mkdir -p "${OUTDIR}"
 echo "OUT:   ${OUTDIR}" 1>&2;
 
-jar=target/yaml2sql-2.1.3-uber.jar
+jar=target/yaml2sql-2.2.0-uber.jar
 java -ea -jar "${jar}" "${IN}" "${IN2}" "${OUTDIR}"
 echo "done $?"

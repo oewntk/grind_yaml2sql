@@ -33,6 +33,9 @@ lexrelations
 senses_vframes
 senses_vtemplates
 semrelations
+usages
+ilis
+wikidatas
 "
 
 # C O L O R S
