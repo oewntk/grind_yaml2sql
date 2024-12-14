@@ -28,7 +28,7 @@ fi
 
 m=wn
 
-jar=target/yaml2sql-2.2.2-uber.jar
+jar=target/yaml2sql-2.3.1-uber.jar
 if [ "$*" != "" ]; then
   indir="$1"
   shift
