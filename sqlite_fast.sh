@@ -4,6 +4,8 @@
 # Copyright (c) 2021-2024. Bernard Bou.
 #
 
+set -e
+
 pragmas_quick="PRAGMA synchronous=OFF;
 PRAGMA count_changes=OFF;
 PRAGMA journal_mode=MEMORY;

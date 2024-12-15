@@ -5,6 +5,8 @@
 
 # 22/11/2021
 
+set -e
+
 # C O N S T S
 
 thisdir=$(dirname $(readlink -m "$0"))

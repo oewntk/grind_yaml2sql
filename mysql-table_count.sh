@@ -4,6 +4,8 @@
 # Copyright (c) 2024. Bernard Bou.
 #
 
+set -e
+
 # D A T A B A S E (PARAM 2)
 
 db="$1"
