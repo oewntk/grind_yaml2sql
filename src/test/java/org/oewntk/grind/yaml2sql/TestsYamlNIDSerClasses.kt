@@ -14,7 +14,7 @@ class TestsYamlNIDSerClasses {
         val result = loadClassesOf(file)
         println("Deserialized object is: ${result.first}")
         result.second.sorted().forEach { println("Loaded class: $it") }
-        return result.second.firstOrNull { it.contains("kotlin") }
+        return result.second.firstOrNull { it.contains("SimpleEntry") }
     }
 
     @Test
