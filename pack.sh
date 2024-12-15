@@ -11,7 +11,7 @@ set -e
 source ../define_build.sh
 
 dbdir=$1
-shift
+[ "$#" -eq 0 ] || shift
 if [ -z "${dbdir}" ]; then
   dbdir=sql
 fi

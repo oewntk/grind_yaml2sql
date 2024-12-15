@@ -54,7 +54,7 @@ export Z='\u001b[0m'
 
 if [ "$1" == "-y" ]; then
 	silent=true
-	shift
+	[ "$#" -eq 0 ] || shift
 else
   echo -e "${Y}Restore utility for ${dbtype}${Z}"
   echo -e "${R}-the -d switch will delete an existing database with this name${Z}"
@@ -73,7 +73,7 @@ fi
 dbdelete=
 if [ "$1" == "-d" ]; then
 	dbdelete=true
-	shift
+	[ "$#" -eq 0 ] || shift
 fi
 
 # D A T A B A S E (PARAM 2)
