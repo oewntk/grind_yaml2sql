@@ -25,6 +25,6 @@ fi
 mkdir -p "${OUTDIR}"
 echo "OUT:   ${OUTDIR}" 1>&2;
 
-jar=target/yaml2sql-2.3.1-uber.jar
+jar=target/yaml2sql-2.3.2-uber.jar
 java -ea -cp "${jar}" org.oewntk.grind.yaml2sql.Serializer  "${IN}" "${IN2}" "${OUTDIR}"
 echo "done $?"
