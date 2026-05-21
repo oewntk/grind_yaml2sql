@@ -72,14 +72,13 @@ class TestsYamlNIDMap {
         @JvmStatic
         @BeforeClass
         fun init() {
-            LibTestsYamlCommon.init()
-            checkNotNull(model)
+            model
 
             // lex key to NID
-            lexKeyToNIDByKey = makeLexesNIDs(model!!.lexes)
+            lexKeyToNIDByKey = makeLexesNIDs(model.lexes)
 
             // lex keyf to NID
-            lexKeyToNIDByKeyF = model!!.lexes
+            lexKeyToNIDByKeyF = model.lexes
                 .asSequence()
                 .map { KeyF.FuncKeyLCP.Mono.of(Lex::lemma, Lex::type, it) }
                 .sorted()

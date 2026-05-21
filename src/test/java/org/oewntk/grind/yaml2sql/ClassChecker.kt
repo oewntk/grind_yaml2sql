@@ -24,7 +24,7 @@ class CustomObjectInputStream(`in`: InputStream, private val classLoader: ClassL
         try {
             val name = desc.name
             return Class.forName(name, false, classLoader)
-        } catch (ex: ClassNotFoundException) {
+        } catch (_x: ClassNotFoundException) {
             return super.resolveClass(desc)
         }
     }
@@ -41,7 +41,7 @@ object Checker {
                     .use { ois ->
                         val obj = ois.readObject()
                         val clazz = obj.javaClass.name
-                         return clazz to classLoader.classes
+                        return clazz to classLoader.classes
                     }
             }
     }
