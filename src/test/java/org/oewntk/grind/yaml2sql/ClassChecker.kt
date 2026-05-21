@@ -24,7 +24,7 @@ class CustomObjectInputStream(`in`: InputStream, private val classLoader: ClassL
         try {
             val name = desc.name
             return Class.forName(name, false, classLoader)
-        } catch (_x: ClassNotFoundException) {
+        } catch (_: ClassNotFoundException) {
             return super.resolveClass(desc)
         }
     }
