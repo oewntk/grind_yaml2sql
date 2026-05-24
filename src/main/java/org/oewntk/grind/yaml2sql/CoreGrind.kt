@@ -23,15 +23,15 @@ object CoreGrind {
      * @param args command-line arguments
      * @return int[0]=flags, int[1]=next arg to process
      */
-    fun flags(args: Array<String>): Int {
+    private fun flags(args: Array<String>): Int {
         var i = 0
         while (i < args.size) {
-            if ("-traceTime" == args[i]) { // if left and is "-traceTime"
+            if ("-verbose" == args[i]) {
+                Tracing.verbose = true
+            } else if ("-traceTime" == args[i]) { // if left and is "-traceTime"
                 Tracing.traceTime = true
             } else if ("-traceHeap" == args[i]) { // if left and is "-traceHeap"
                 Tracing.traceHeap = true
-            } else if ("-verbose" == args[i]) {
-                Tracing.verbose = true
             } else {
                 break
             }
