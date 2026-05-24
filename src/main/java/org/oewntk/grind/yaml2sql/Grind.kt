@@ -50,13 +50,13 @@ object Grind {
 
         // Supply model
         progress("before model is supplied,", startTime)
-        val model = Factory(inDir, inDir2).get()
+        val model = Factory(inDir, inDir2, verbose = Tracing.verbose).get()
         //Tracing.psInfo.printf("[Model] %s%n%s%n%n", Arrays.toString(model.getSources()), model.info());
         progress("after model is supplied,", startTime)
 
         // Consume model
         progress("before model is consumed,", startTime)
-        ModelConsumer(outDir).accept(model!!)
+        ModelConsumer(outDir, verbose = Tracing.verbose).accept(model!!)
         progress("after model is consumed,", startTime)
 
         // End

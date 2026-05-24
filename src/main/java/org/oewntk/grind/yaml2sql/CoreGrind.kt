@@ -26,12 +26,12 @@ object CoreGrind {
     fun flags(args: Array<String>): Int {
         var i = 0
         while (i < args.size) {
-            if ("-traceTime" == args[i]) // if left and is "-traceTime"
-            {
+            if ("-traceTime" == args[i]) { // if left and is "-traceTime"
                 Tracing.traceTime = true
-            } else if ("-traceHeap" == args[i]) // if left and is "-traceHeap"
-            {
+            } else if ("-traceHeap" == args[i]) { // if left and is "-traceHeap"
                 Tracing.traceHeap = true
+            } else if ("-verbose" == args[i]) {
+                Tracing.verbose = true
             } else {
                 break
             }
@@ -72,7 +72,7 @@ object CoreGrind {
 
         // Supply model
         progress("before model is supplied,", startTime)
-        val model = CoreFactory(inDir).get()
+        val model = CoreFactory(inDir, verbose = Tracing.verbose).get()
         //Tracing.psInfo.printf("[CoreModel] %s%n%s%n%n", model.getSource(), model.info());
         progress("after model is supplied,", startTime)
 
