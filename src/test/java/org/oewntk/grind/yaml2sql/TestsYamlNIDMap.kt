@@ -23,7 +23,7 @@ class TestsYamlNIDMap {
     private val zymurgyLex = Lex("zymurgy", "n")
 
     private fun testLookupByKey(lex: Lex, expectedNID: Int) {
-        val lexK = Key.KeyLCP.of(lex, Lex::lemma, Lex::type)
+        val lexK = Key.KeyLCP.of(lex, Lex::lemma) { it.type.toCategory() }
         val r1 = NIDMaps.lookup(lexKeyToNIDByKey, lexK)
         assertEquals(expectedNID, r1)
 
@@ -33,7 +33,7 @@ class TestsYamlNIDMap {
     }
 
     private fun testLookupByKeyF(lex: Lex, expectedNID: Int) {
-        val lexK = KeyF.FuncKeyLCP.Mono.of(Lex::lemma, Lex::type, lex)
+        val lexK = KeyF.FuncKeyLCP.Mono.of(Lex::lemma, { it.type.toCategory() }, lex)
         val r = NIDMaps.lookup(lexKeyToNIDByKeyF, lexK)
         assertEquals(expectedNID, r)
     }
@@ -60,7 +60,7 @@ class TestsYamlNIDMap {
     @Test(expected = NullPointerException::class)
     fun failingTestLookupByKeyF() {
         val lex = hoodLex
-        val k = KeyF.FuncKeyLCP.Mono.of(Lex::lemma, Lex::type, lex)
+        val k = KeyF.FuncKeyLCP.Mono.of(Lex::lemma, { it.type.toCategory() }, lex)
         NIDMaps.lookup(lexKeyToNIDByKey, k)
     }
 
@@ -80,7 +80,7 @@ class TestsYamlNIDMap {
             // lex keyf to NID
             lexKeyToNIDByKeyF = model.lexes
                 .asSequence()
-                .map { KeyF.FuncKeyLCP.Mono.of(Lex::lemma, Lex::type, it) }
+                .map { KeyF.FuncKeyLCP.Mono.of(Lex::lemma, { it.type.toCategory() }, it) }
                 .sorted()
                 .withIndex()
                 .associate { it.value to it.index + 1 } // map(of_t(lex), nid)
