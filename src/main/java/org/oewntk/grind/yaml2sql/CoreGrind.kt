@@ -23,7 +23,7 @@ object CoreGrind {
      * @param args command-line arguments
      * @return int[0]=flags, int[1]=next arg to process
      */
-    private fun flags(args: Array<String>): Int {
+    fun flags(args: Array<String>): Int {
         var i = 0
         while (i < args.size) {
             if ("-verbose" == args[i]) {
