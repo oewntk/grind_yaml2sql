@@ -10,9 +10,8 @@
 /sers/
 **/_*/
 **/_*
+**/*.jar
 /dist/*.zip
 /oewn.csv
 /dependency-reduced-pom.xml
 /build
-/oewn-2024-mysql-2.3.2.zip
-/oewn-grind-yaml2sql.jar
