@@ -3,7 +3,7 @@
  */
 package org.oewntk.grind.yaml2sql
 
-import org.oewntk.model.Serialize.serializeCoreModel
+import org.oewntk.model.SerializeJVM.serializeCoreModel
 import org.oewntk.sql.out.SerializeNIDs.serializeNIDs
 import org.oewntk.yaml.`in`.Factory.Companion.makeModel
 import java.io.File
