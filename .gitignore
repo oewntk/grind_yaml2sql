@@ -8,10 +8,13 @@
 /test*
 /nidmaps/
 /sers/
+/out*/
+/out*
+
 **/_*/
 **/_*
 **/*.jar
+
 /dist/*.zip
 /oewn.csv
 /dependency-reduced-pom.xml
-/build
