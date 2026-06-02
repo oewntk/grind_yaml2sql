@@ -14,9 +14,11 @@ object LibTestsYamlCommon {
 
     private val source: String? = System.getProperty("SOURCE")
 
-    val silent =  !System.getProperties().containsKey("SILENT")
+    val silent = if (System.getProperties().containsKey("VERBOSE")) false
+    else if (System.getProperties().containsKey("SILENT")) true
+    else true
 
-    val ps: PrintStream = if (silent) org.oewntk.yaml.`in`.Tracing.psInfo else org.oewntk.yaml.`in`.Tracing.psNull
+    val ps: PrintStream = if (!silent) Tracing.psInfo else Tracing.psNull
 
     val model: CoreModel by lazy {
         if (source == null) {
