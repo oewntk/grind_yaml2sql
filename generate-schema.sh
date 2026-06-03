@@ -30,7 +30,7 @@ fi
 
 m=wn
 
-jar=yaml2sql-2.4.0-uber.jar
+jar=yaml2sql-3.0.1-uber.jar
 if [ ! -e "${jar}" ]; then
   if [ ! -e "target/${jar}" ]; then
     echo "Non existing uber jar" >&2

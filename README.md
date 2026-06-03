@@ -46,7 +46,7 @@ grinds the SQL database
 
 		<groupId>io.github.oewntk</groupId>
 		<artifactId>yaml2sql</artifactId>
-		<version>2.4.0</version>
+		<version>3.0.1</version>
 
 ## Dependencies
 
