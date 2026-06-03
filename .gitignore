@@ -1,5 +1,6 @@
 /target/
 /build/
+
 /yaml*/
 /yaml*
 /sql*/
@@ -7,7 +8,8 @@
 /test*/
 /test*
 /nidmaps/
-/sers/
+/sers*/
+/sers*
 /out*/
 /out*
 
