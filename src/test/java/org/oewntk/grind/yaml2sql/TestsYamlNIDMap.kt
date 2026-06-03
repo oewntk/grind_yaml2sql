@@ -80,7 +80,7 @@ class TestsYamlNIDMap {
             // lex keyf to NID
             lexKeyToNIDByKeyF = model.lexes
                 .asSequence()
-                .map { KeyF.FuncKeyLCP.Mono.of(Lex::lemma, { it.type.toCategory() }, it) }
+                .map { KeyF.FuncKeyLCP.Mono.of(Lex::lemma, { lex -> lex.type.toCategory() }, it) }
                 .sorted()
                 .withIndex()
                 .associate { it.value to it.index + 1 } // map(of_t(lex), nid)
