@@ -5,13 +5,11 @@
 /yaml*
 /sql*/
 /sql*
-/test*/
-/test*
+/out*/
+/out*
 /nidmaps/
 /sers*/
 /sers*
-/out*/
-/out*
 
 **/_*/
 **/_*
