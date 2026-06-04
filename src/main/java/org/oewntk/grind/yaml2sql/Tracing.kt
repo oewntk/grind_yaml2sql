@@ -31,8 +31,6 @@ object Tracing {
 
     var traceTime: Boolean = false
 
-    var verbose: Boolean = false
-
     fun start(): Long {
         val startTime = System.currentTimeMillis()
 
