@@ -10,7 +10,6 @@ import org.oewntk.grind.yaml2sql.LibTestsYamlCommon.model
 import org.oewntk.model.Key
 import org.oewntk.model.KeyF
 import org.oewntk.model.Lex
-import org.oewntk.sql.out.Lexes.makeLexesNIDs
 import org.oewntk.sql.out.NIDMaps
 import kotlin.test.assertEquals
 
@@ -23,17 +22,17 @@ class TestsYamlNIDMap {
     private val zymurgyLex = Lex("zymurgy", "n")
 
     private fun testLookupByKey(lex: Lex, expectedNID: Int) {
-        val lexK = Key.KeyLCP.of(lex, Lex::lemma) { it.type.toCategory() }
+        val lexK = Key.FromLemmaCategoryPronunciation.of(lex, Lex::lemma) { it.type.toCategory() }
         val r1 = NIDMaps.lookup(lexKeyToNIDByKey, lexK)
         assertEquals(expectedNID, r1)
 
-        val lexK2 = Key.KeyLCP.of_t(lex)
+        val lexK2 = Key.FromLemmaCategoryPronunciation.of_t(lex)
         val r2 = NIDMaps.lookup(lexKeyToNIDByKey, lexK2)
         assertEquals(expectedNID, r2)
     }
 
     private fun testLookupByKeyF(lex: Lex, expectedNID: Int) {
-        val lexK = KeyF.FuncKeyLCP.Mono.of(Lex::lemma, { it.type.toCategory() }, lex)
+        val lexK = KeyF.FuncFromLemmaCategoryPronunciation.Mono.of(Lex::lemma, { it.type.toCategory() }, lex)
         val r = NIDMaps.lookup(lexKeyToNIDByKeyF, lexK)
         assertEquals(expectedNID, r)
     }
@@ -53,20 +52,21 @@ class TestsYamlNIDMap {
     @Test(expected = NullPointerException::class)
     fun failingTestLookupByKey() {
         val lex = hoodLex
-        val k = Key.KeyLCP.of_t(lex)
+        val k = Key.FromLemmaCategoryPronunciation.of_t(lex)
         NIDMaps.lookup(lexKeyToNIDByKeyF, k)
     }
 
     @Test(expected = NullPointerException::class)
     fun failingTestLookupByKeyF() {
         val lex = hoodLex
-        val k = KeyF.FuncKeyLCP.Mono.of(Lex::lemma, { it.type.toCategory() }, lex)
+        val k = KeyF.FuncFromLemmaCategoryPronunciation.Mono.of(Lex::lemma, { it.type.toCategory() }, lex)
         NIDMaps.lookup(lexKeyToNIDByKey, k)
     }
 
     companion object {
 
         private lateinit var lexKeyToNIDByKey: Map<Key, Int>
+
         private lateinit var lexKeyToNIDByKeyF: Map<Key, Int>
 
         @JvmStatic
@@ -75,12 +75,17 @@ class TestsYamlNIDMap {
             model
 
             // lex key to NID
-            lexKeyToNIDByKey = makeLexesNIDs(model.lexes)
+            lexKeyToNIDByKey = model.lexes
+                .asSequence()
+                .map { Key.FromLemmaCategoryPronunciation.of_t(it) }
+                .sorted()
+                .withIndex()
+                .associate { it.value to it.index + 1 } // map(of_t(lex), nid)
 
             // lex keyf to NID
             lexKeyToNIDByKeyF = model.lexes
                 .asSequence()
-                .map { KeyF.FuncKeyLCP.Mono.of(Lex::lemma, { lex -> lex.type.toCategory() }, it) }
+                .map { KeyF.FuncFromLemmaCategoryPronunciation.Mono.of(Lex::lemma, { lex -> lex.type.toCategory() }, it) }
                 .sorted()
                 .withIndex()
                 .associate { it.value to it.index + 1 } // map(of_t(lex), nid)
