@@ -64,17 +64,17 @@ object CoreGrind {
         Tracing.psInfo.println("[Output] " + outDir.absolutePath)
 
         // Supply model
-        progress("before model is supplied,", startTime)
+        progress("before model is supplied", startTime)
         val model = CoreFactory(inDir, verbose = verbose).get()
         //Tracing.psInfo.printf("[CoreModel] %s%n%s%n%n", model.getSource(), model.info());
-        progress("after model is supplied,", startTime)
+        progress("after model is supplied", startTime)
 
         // Consume model
-        progress("before model is consumed,", startTime)
+        progress("before model is consumed", startTime)
         CoreModelConsumer(outDir, verbose = verbose).accept(model!!)
-        progress("after model is consumed,", startTime)
+        progress("after model is consumed", startTime)
 
         // End
-        progress("total,", startTime)
+        progress("end", startTime)
     }
 }
