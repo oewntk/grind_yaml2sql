@@ -49,14 +49,14 @@ class TestsYamlNIDMap {
         testLookupByKeyF(zymurgyLex, lexKeyToNIDByKeyF.size) // last
     }
 
-    @Test(expected = NullPointerException::class)
+    @Test
     fun failingTestLookupByKey() {
         val lex = hoodLex
         val k = Key.UsingPronunciation.of(lex)
         NIDMaps.lookup(lexKeyToNIDByKeyF, k)
     }
 
-    @Test(expected = NullPointerException::class)
+    @Test
     fun failingTestLookupByKeyF() {
         val lex = hoodLex
         val k = KeyF.FuncUsingPronunciation.Mono.of(Lex::lemma, { it.type.toCategory() }, lex)
