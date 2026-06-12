@@ -36,6 +36,7 @@ object CoreGrind {
         val in1 by parser.argument(     ArgType.String,                                               description = "Input dir or file")
         val in2 by parser.argument(     ArgType.String,                                               description = "Extra input dir or file")
         val out by parser.argument(     ArgType.String,                                               description = "Output dir or file")
+        val compat by parser.option(    ArgType.Boolean,  shortName = "c",  fullName = "compat",      description = "Compat schema")            .default(false)
         val verbose by parser.option(   ArgType.Boolean,  shortName = "v",  fullName = "verbose",     description = "Verbose output")            .default(false)
 
         val traceTime by parser.option( ArgType.Boolean,  shortName = "tt", fullName = "trace:time",  description = "trace time")                .default(false)
@@ -71,7 +72,7 @@ object CoreGrind {
 
         // Consume model
         progress("before model is consumed", startTime)
-        CoreModelConsumer(outDir, verbose = verbose).accept(model!!)
+        CoreModelConsumer(outDir, compatSchema = compat, verbose = verbose).accept(model!!)
         progress("after model is consumed", startTime)
 
         // End
