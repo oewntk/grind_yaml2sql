@@ -33,14 +33,15 @@ object CoreGrind {
         val parser = ArgParser("yaml2sql")
         // Options (start with - or --)
         // @formatter:off
-        val in1 by parser.argument(     ArgType.String,                                               description = "Input dir or file")
-        val in2 by parser.argument(     ArgType.String,                                               description = "Extra input dir or file")
-        val out by parser.argument(     ArgType.String,                                               description = "Output dir or file")
-        val compat by parser.option(    ArgType.Boolean,  shortName = "c",  fullName = "compat",      description = "Compat schema")            .default(false)
-        val verbose by parser.option(   ArgType.Boolean,  shortName = "v",  fullName = "verbose",     description = "Verbose output")            .default(false)
+        val in1 by parser.argument(      ArgType.String,                                               description = "Input dir or file")
+        val in2 by parser.argument(      ArgType.String,                                               description = "Extra input dir or file")
+        val out by parser.argument(      ArgType.String,                                               description = "Output dir or file")
+        val compat by parser.option(     ArgType.Boolean,  shortName = "c",  fullName = "compat",      description = "Compat schema")            .default(false)
+        val doNotThrow by parser.option( ArgType.Boolean,  shortName = "nt", fullName = "no_throw",    description = "Do not throw")             .default(false)
+        val verbose by parser.option(    ArgType.Boolean,  shortName = "v",  fullName = "verbose",     description = "Verbose output")           .default(false)
 
-        val traceTime by parser.option( ArgType.Boolean,  shortName = "tt", fullName = "trace:time",  description = "trace time")                .default(false)
-        val traceHeap by parser.option( ArgType.Boolean,  shortName = "th", fullName = "trace:heap",  description = "trace heap")                .default(false)
+        val traceTime by parser.option(  ArgType.Boolean,  shortName = "tt", fullName = "trace:time",  description = "trace time")               .default(false)
+        val traceHeap by parser.option(  ArgType.Boolean,  shortName = "th", fullName = "trace:heap",  description = "trace heap")               .default(false)
         // @formatter:on
 
         // Tracing
@@ -66,7 +67,7 @@ object CoreGrind {
 
         // Supply model
         progress("before model is supplied", startTime)
-        val model = CoreFactory(inDir, verbose = verbose).get()
+        val model = CoreFactory(inDir, throws = !doNotThrow, verbose = verbose).get()
         //Tracing.psInfo.printf("[CoreModel] %s%n%s%n%n", model.getSource(), model.info());
         progress("after model is supplied", startTime)
 
