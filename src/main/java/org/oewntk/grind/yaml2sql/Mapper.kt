@@ -3,7 +3,8 @@
  */
 package org.oewntk.grind.yaml2sql
 
-import org.oewntk.sql.out.NIDMaps.printMaps
+import org.oewntk.model.NIDs.printMaps
+import org.oewntk.sql.out.Names
 import org.oewntk.yaml.`in`.Factory.Companion.makeModel
 import java.io.File
 import java.io.IOException
@@ -30,6 +31,14 @@ object Mapper {
             outDir.mkdirs()
         }
         val model = makeModel(args)
-        printMaps(model!!, outDir)
+        printMaps(
+            model!!, outDir,
+            wordsFile = Names.WORDS.FILE,
+            casedWordsFile = Names.CASEDWORDS.FILE,
+            morphsFile = Names.MORPHS.FILE,
+            pronunciationsFile = Names.PRONUNCIATIONS.FILE,
+            synsetsFile = Names.SYNSETS.FILE,
+            sensesFile = Names.SENSES.FILE,
+        )
     }
 }

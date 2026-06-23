@@ -10,7 +10,7 @@ import org.oewntk.grind.yaml2sql.LibTestsYamlCommon.model
 import org.oewntk.model.Key
 import org.oewntk.model.KeyF
 import org.oewntk.model.Lex
-import org.oewntk.sql.out.NIDMaps
+import org.oewntk.model.NIDs.lookup
 import kotlin.test.assertEquals
 
 class TestsYamlNIDMap {
@@ -23,17 +23,17 @@ class TestsYamlNIDMap {
 
     private fun testLookupByKey(lex: Lex, expectedNID: Int) {
         val lexK = Key.UsingPronunciation.of(lex, Lex::lemma) { it.type.toCategory() }
-        val r1 = NIDMaps.lookup(lexKeyToNIDByKey, lexK)
+        val r1 = lookup(lexKeyToNIDByKey, lexK)
         assertEquals(expectedNID, r1)
 
         val lexK2 = Key.UsingPronunciation.of(lex)
-        val r2 = NIDMaps.lookup(lexKeyToNIDByKey, lexK2)
+        val r2 = lookup(lexKeyToNIDByKey, lexK2)
         assertEquals(expectedNID, r2)
     }
 
     private fun testLookupByKeyF(lex: Lex, expectedNID: Int) {
         val lexK = KeyF.FuncUsingPronunciation.Mono.of(Lex::lemma, { it.type.toCategory() }, lex)
-        val r = NIDMaps.lookup(lexKeyToNIDByKeyF, lexK)
+        val r = lookup(lexKeyToNIDByKeyF, lexK)
         assertEquals(expectedNID, r)
     }
 
@@ -53,14 +53,14 @@ class TestsYamlNIDMap {
     fun failingTestLookupByKey() {
         val lex = hoodLex
         val k = Key.UsingPronunciation.of(lex)
-        NIDMaps.lookup(lexKeyToNIDByKeyF, k)
+        lookup(lexKeyToNIDByKeyF, k)
     }
 
     @Test
     fun failingTestLookupByKeyF() {
         val lex = hoodLex
         val k = KeyF.FuncUsingPronunciation.Mono.of(Lex::lemma, { it.type.toCategory() }, lex)
-        NIDMaps.lookup(lexKeyToNIDByKey, k)
+        lookup(lexKeyToNIDByKey, k)
     }
 
     companion object {
