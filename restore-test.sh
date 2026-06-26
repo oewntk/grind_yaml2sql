@@ -11,7 +11,7 @@ set -e
 
 thisdir=$(dirname $(readlink -m "$0"))
 sqldir="${thisdir}/sql"
-dbtype=sqlite
+dbtype=dbtype
 modules="wn"
 tables="
 synsets
@@ -90,71 +90,14 @@ db="$1"
 if [ -z "${db}" ]; then
   read -p "Enter ${dbtype} database name: " db
 fi
-if [[ "${db}" != *.sqlite ]]; then
-  db="${db}.sqlite"
-fi
 export db
 
 # F U N C T I O N S
 
-pragmas_quick="PRAGMA synchronous=OFF;
-PRAGMA count_changes=OFF;
-PRAGMA journal_mode=MEMORY;
-PRAGMA temp_store=MEMORY;
-PRAGMA auto_vacuum=NONE;
-PRAGMA automatic_index=OFF;"
-
-pragmas_default="PRAGMA synchronous=FULL;
-PRAGMA count_changes=OFF;
-PRAGMA journal_mode=DELETE;
-PRAGMA temp_store=OFF;
-PRAGMA auto_vacuum=NONE;
-PRAGMA automatic_index=OFF;"
-
-begin="BEGIN TRANSACTION;"
-
-commit="COMMIT TRANSACTION;"
-
-tempdir=$(mktemp -d /tmp/sqlite.XXXXXXXXX)
-
-function to_temp() {
-  local sqlfile="$1"
-  local base="$(basename "${sqlfile}")"
-  echo "${tempdir}/${base}"
-}
-
-function fast() {
-  local sqlfile="$1" # can be or include *
-  local base="$(basename "${sqlfile}")"
-  local sqlfile2="${tempdir}/${base}"
-  printf '%s\n%s\n%s\n%s\n%s' "${pragmas_quick}" "${begin}" "$(cat ${sqlfile})" "${commit}" "${pragmas_default}"
-}
-
-function fast_to_temp() {
-  local sqlfile="$1" # can be or include *
-  tempfile=$(to_temp "${sqlfile}")
-  fast "${sqlfile}" >"${tempfile}"
-  echo "${tempfile}"
-}
-
 function process() {
   local sqlfile="$1"
   local op="$2"
-  if [ ! -e "${sqlfile}" ]; then
-    echo -e "${R}${sqlfile} does not exist${Z}"
-    return
-  fi
-  local base="$(basename "${sqlfile}")"
-  #echo "${base}"
-  case ${op} in
-  create | index | reference | data)
-    sqlite3 -bail -init "${sqlfile}" "${db}" .quit 2>>LOG || echo -e "${R}FAILED ${sqlfile}${Z}" 2>>LOG || echo -e "${R}FAILED ${sqlfile}${Z}"
-    ;;
-  other | *)
-    local sqlfile2=$(fast_to_temp "${sqlfile}")
-    sqlite3 -bail -init "${sqlfile2}" "${db}" .quit 2>>LOG || echo -e "${R}FAILED ${sqlfile}${Z}" 2>>LOG || echo -e "${R}FAILED ${sqlfile}${Z}"
-    ;;
-  esac
+  echo -e "${M}process${Z} ${C}${op} ${B}${sqlfile}${Z}"
 }
 
 function dbexists() {
@@ -164,12 +107,10 @@ function dbexists() {
 
 function deletedb() {
   echo -e "${M}delete ${db}${Z}"
-  rm -f "${db}"
 }
 
 function createdb() {
   echo -e "${M}create ${db}${Z}"
-  touch "${db}"
 }
 
 # R U N
