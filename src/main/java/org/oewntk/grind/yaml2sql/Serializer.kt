@@ -4,7 +4,8 @@
 package org.oewntk.grind.yaml2sql
 
 import org.oewntk.model.SerializeJVM.serializeCoreModel
-import org.oewntk.sql.out.SerializeNIDs.serializeNIDs
+import org.oewntk.model.SerializeNIDs.serializeNIDs
+import org.oewntk.sql.out.Names
 import org.oewntk.yaml.`in`.Factory.Companion.makeModel
 import java.io.File
 import java.io.IOException
@@ -34,6 +35,13 @@ object Serializer {
         }
         val model = makeModel(args)
         serializeCoreModel(model!!, File(outDir, FILE_MODEL))
-        serializeNIDs(model, outDir)
+        serializeNIDs(model, outDir,
+            wordsFile = Names.WORDS.FILE,
+            casedWordsFile = Names.CASEDWORDS.FILE,
+            morphsFile = Names.MORPHS.FILE,
+            pronunciationsFile = Names.PRONUNCIATIONS.FILE,
+            synsetsFile = Names.SYNSETS.FILE,
+            sensesFile = Names.SENSES.FILE,
+        )
     }
 }
