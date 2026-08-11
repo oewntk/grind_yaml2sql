@@ -22,7 +22,7 @@ class TestsYamlNIDMap {
     private val zymurgyLex = Lex("zymurgy", "n")
 
     private fun testLookupByKey(lex: Lex, expectedNID: Int) {
-        val lexK = Key.UsingPronunciation.of(lex, Lex::lemma) { it.type.toCategory() }
+        val lexK = Key.UsingPronunciation.of(lex, Lex::lemma) { it.partOfSpeech.toCategory() }
         val r1 = lookup(lexKeyToNIDByKey, lexK)
         assertEquals(expectedNID, r1)
 
@@ -32,7 +32,7 @@ class TestsYamlNIDMap {
     }
 
     private fun testLookupByKeyF(lex: Lex, expectedNID: Int) {
-        val lexK = KeyF.FuncUsingPronunciation.Mono.of(Lex::lemma, { it.type.toCategory() }, lex)
+        val lexK = KeyF.FuncUsingPronunciation.Mono.of(Lex::lemma, { it.partOfSpeech.toCategory() }, lex)
         val r = lookup(lexKeyToNIDByKeyF, lexK)
         assertEquals(expectedNID, r)
     }
@@ -59,7 +59,7 @@ class TestsYamlNIDMap {
     @Test
     fun failingTestLookupByKeyF() {
         val lex = hoodLex
-        val k = KeyF.FuncUsingPronunciation.Mono.of(Lex::lemma, { it.type.toCategory() }, lex)
+        val k = KeyF.FuncUsingPronunciation.Mono.of(Lex::lemma, { it.partOfSpeech.toCategory() }, lex)
         lookup(lexKeyToNIDByKey, k)
     }
 
@@ -85,7 +85,7 @@ class TestsYamlNIDMap {
             // lex keyf to NID
             lexKeyToNIDByKeyF = model.lexes
                 .asSequence()
-                .map { KeyF.FuncUsingPronunciation.Mono.of(Lex::lemma, { lex -> lex.type.toCategory() }, it) }
+                .map { KeyF.FuncUsingPronunciation.Mono.of(Lex::lemma, { lex -> lex.partOfSpeech.toCategory() }, it) }
                 .sorted()
                 .withIndex()
                 .associate { it.value to it.index + 1 } // map(of_t(lex), nid)
