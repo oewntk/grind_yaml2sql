@@ -9,6 +9,7 @@ import org.junit.Test
 import org.oewntk.grind.yaml2sql.LibTestsYamlCommon.model
 import org.oewntk.model.Key
 import org.oewntk.model.KeyF
+import org.oewntk.model.Lemma
 import org.oewntk.model.Lex
 import org.oewntk.model.NIDs.lookup
 import kotlin.test.assertEquals
@@ -16,10 +17,10 @@ import kotlin.test.assertEquals
 class TestsYamlNIDMap {
 
     // first
-    private val hoodLex = Lex("'hood", "n")
+    private val hoodLex = Lex(Lemma("'hood"), "n")
 
     // last
-    private val zymurgyLex = Lex("zymurgy", "n")
+    private val zymurgyLex = Lex(Lemma("zymurgy"), "n")
 
     private fun testLookupByKey(lex: Lex, expectedNID: Int) {
         val lexK = Key.UsingPronunciation.of(lex, Lex::lemma) { it.partOfSpeech.toCategory() }
