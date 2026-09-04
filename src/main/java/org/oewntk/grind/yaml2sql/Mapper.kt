@@ -40,6 +40,7 @@ object Mapper {
             pronunciationsFile = Names.PRONUNCIATIONS.FILE,
             synsetsFile = Names.SYNSETS.FILE,
             sensesFile = Names.SENSES.FILE,
+            sensesWordsFile = Names.SENSES_WORDS.FILE,
         )
         serializeNIDs(
             model, outDir,
@@ -49,6 +50,7 @@ object Mapper {
             pronunciationsFile = Names.PRONUNCIATIONS.FILE,
             synsetsFile = Names.SYNSETS.FILE,
             sensesFile = Names.SENSES.FILE,
-        )
+            sensesWordsFile = Names.SENSES_WORDS.FILE,
+       )
     }
 }
